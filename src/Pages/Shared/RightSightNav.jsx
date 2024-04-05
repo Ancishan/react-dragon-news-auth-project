@@ -9,8 +9,8 @@ import q3 from '../../assets/qZone3.png';
 const RightSightNav = () => {
     return (
         <div>
-            <div className="p-4">
-                <h2 className="pb-3">Login With</h2>
+            <div className="">
+                <h2 className="pb-3 text-xl font-bold">Login With</h2>
                 <button className="btn btn-outline w-full text-blue-500 ">
                 <FaGoogle />
                     Log in with Google

@@ -1,7 +1,22 @@
 import { Link, NavLink } from "react-router-dom";
-import user from '../../assets/user.png';
+import userr from '../../assets/user.png';
+import { useContext } from "react";
+import { AuthContext } from "../../AuthProvider";
 
 const Navbar = () => {
+
+
+    // Auth Provider er o khane logout fucntion er kaj er por ..jodi user login thake tahole take logout dekhanr jnno ei process.
+    const { user, logOut } = useContext(AuthContext);
+
+    // Log Out krr jnno even handler 
+    const hadelLogOut = () =>{
+        logOut()
+        .then()
+        .catch()
+        
+    }
+
 
     const navLinks = <>
         <li><NavLink to="/">Home</NavLink></li>
@@ -26,20 +41,30 @@ const Navbar = () => {
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
-                    
+
                     {navLinks}
-                    
+
                 </ul>
             </div>
             <div className="navbar-end">
                 <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
                     <div className="w-10 rounded-full">
-                        <img src={user} alt="" />
+                        <img src={userr} alt="" />
                     </div>
                 </div>
-                <Link>
-                    <button className="btn">Login</button>
-                </Link>
+
+                {/* user login and logout dynamic */}
+                {
+                    user ?
+                        <button onClick={hadelLogOut} className="btn">LogOut</button>
+                        :
+                        <Link to='/login'>
+                            <button className="btn">Login</button>
+                        </Link>
+
+
+
+                }
 
             </div>
         </div>
